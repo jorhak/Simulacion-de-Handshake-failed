@@ -1,0 +1,6 @@
+app/__pycache__/
+app/.python-version
+app/.venv/
+nginx/certs/
+*.log
+bionic/.vagrant

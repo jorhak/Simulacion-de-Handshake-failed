@@ -1,0 +1,25 @@
+services:
+  api:
+    image: app:1.0.0
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: api
+    restart: always
+
+  nginx:
+    image: nginx:1.0.0
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: nginx
+    ports:
+      - "443:443"
+    depends_on:
+      - api
+    restart: always
+    volumes:
+      - nginx_volume:/var/log/nginx
+
+volumes:
+  nginx_volume:
